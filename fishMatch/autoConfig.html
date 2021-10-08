@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <title>fishMatchConfig</title>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <h3>鱼</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>等级</th>
+                        <th>名称</th>
+                        <th>图片url</th>
+                        <th>价值(分)</th>
+                        <th>各阵营初始数量</th>
+                        <th>初始钓回概率(%)</th>
+                        <th>钓回失败后增加概率(%)</th>
+                        <th>钓中后跑马灯广播</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>lv1</b></td>
+                        <td id="fishName1" contenteditable="true">等级1鱼</td>
+                        <td id="fishUrl1" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost1" contenteditable="true">1</td>
+                        <td id="fishStock1" contenteditable="true">10000</td>
+                        <td id="fishRatio1" contenteditable="true">100</td>
+                        <td id="fishHighRatio1" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast1">
+                                <label class="custom-control-label" for="fishBroadcast1">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv2</b></td>
+                        <td id="fishName2" contenteditable="true">等级2鱼</td>
+                        <td id="fishUrl2" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost2" contenteditable="true">2</td>
+                        <td id="fishStock2" contenteditable="true">20000</td>
+                        <td id="fishRatio2" contenteditable="true">200</td>
+                        <td id="fishHighRatio2" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast2">
+                                <label class="custom-control-label" for="fishBroadcast2">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv3</b></td>
+                        <td id="fishName3" contenteditable="true">等级3鱼</td>
+                        <td id="fishUrl3" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost3" contenteditable="true">3</td>
+                        <td id="fishStock3" contenteditable="true">30000</td>
+                        <td id="fishRatio3" contenteditable="true">300</td>
+                        <td id="fishHighRatio3" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast3">
+                                <label class="custom-control-label" for="fishBroadcast3">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv4</b></td>
+                        <td id="fishName4" contenteditable="true">等级4鱼</td>
+                        <td id="fishUrl4" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost4" contenteditable="true">4</td>
+                        <td id="fishStock4" contenteditable="true">40000</td>
+                        <td id="fishRatio4" contenteditable="true">400</td>
+                        <td id="fishHighRatio4" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast4">
+                                <label class="custom-control-label" for="fishBroadcast4">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv5</b></td>
+                        <td id="fishName5" contenteditable="true">等级5鱼</td>
+                        <td id="fishUrl5" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost5" contenteditable="true">5</td>
+                        <td id="fishStock5" contenteditable="true">50000</td>
+                        <td id="fishRatio5" contenteditable="true">500</td>
+                        <td id="fishHighRatio5" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast5">
+                                <label class="custom-control-label" for="fishBroadcast5">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv6</b></td>
+                        <td id="fishName6" contenteditable="true">等级6鱼</td>
+                        <td id="fishUrl6" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost6" contenteditable="true">6</td>
+                        <td id="fishStock6" contenteditable="true">60000</td>
+                        <td id="fishRatio6" contenteditable="true">600</td>
+                        <td id="fishHighRatio6" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast6">
+                                <label class="custom-control-label" for="fishBroadcast6">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv7</b></td>
+                        <td id="fishName7" contenteditable="true">等级7鱼</td>
+                        <td id="fishUrl7" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost7" contenteditable="true">7</td>
+                        <td id="fishStock7" contenteditable="true">70000</td>
+                        <td id="fishRatio7" contenteditable="true">700</td>
+                        <td id="fishHighRatio7" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast7">
+                                <label class="custom-control-label" for="fishBroadcast7">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv8</b></td>
+                        <td id="fishName8" contenteditable="true">等级8鱼</td>
+                        <td id="fishUrl8" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost8" contenteditable="true">8</td>
+                        <td id="fishStock8" contenteditable="true">80000</td>
+                        <td id="fishRatio8" contenteditable="true">800</td>
+                        <td id="fishHighRatio8" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast8">
+                                <label class="custom-control-label" for="fishBroadcast8">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>lv9</b></td>
+                        <td id="fishName9" contenteditable="true">等级9鱼</td>
+                        <td id="fishUrl9" class="inputUrl" aria-readonly="true">图片url</td>
+                        <td id="fishCost9" contenteditable="true">9</td>
+                        <td id="fishStock9" contenteditable="true">90000</td>
+                        <td id="fishRatio9" contenteditable="true">900</td>
+                        <td id="fishHighRatio9" contenteditable="true">0</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="fishBroadcast9">
+                                <label class="custom-control-label" for="fishBroadcast9">Broadcast</label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>礼物</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>-</th>
+                        <th>id</th>
+                        <th>名称</th>
+                        <th>价值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>初级钓鱼</b></td>
+                        <td id="giftId1" contenteditable="true">10001</td>
+                        <td id="giftName1" contenteditable="true">钓lv1~lv4鱼</td>
+                        <td id="giftCost1" contenteditable="true">9</td>
+                    </tr>
+                    <tr>
+                        <td><b>中级钓鱼</b></td>
+                        <td id="giftId2" contenteditable="true">20001</td>
+                        <td id="giftName2" contenteditable="true">钓lv4~lv7鱼</td>
+                        <td id="giftCost2" contenteditable="true">99</td>
+                    </tr>
+                    <tr>
+                        <td><b>高级钓鱼</b></td>
+                        <td id="giftId3" contenteditable="true">30001</td>
+                        <td id="giftName3" contenteditable="true">钓lv6~lv9鱼</td>
+                        <td id="giftCost3" contenteditable="true">999</td>
+                    </tr>
+                    <tr>
+                        <td><b>渔网</b></td>
+                        <td id="giftId4" contenteditable="true">40001</td>
+                        <td id="giftName4" contenteditable="true">钓回丢失的鱼</td>
+                        <td id="giftCost4" contenteditable="true">520</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>动画资源</h3>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>-</th>
+                        <th>lv1</th>
+                        <th>lv2</th>
+                        <th>lv3</th>
+                        <th>lv4</th>
+                        <th>lv5</th>
+                        <th>lv6</th>
+                        <th>lv7</th>
+                        <th>lv8</th>
+                        <th>lv9</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="resouce1">
+                        <td>初级钓鱼</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr id="resouce2">
+                        <td>中级钓鱼</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr id="resouce3">
+                        <td>高级钓鱼</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                        <td contenteditable="true">15817</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>活动主页面</h3>
+            <textarea id="campaignMainUrl" class="form-control" rows="2"
+                placeholder="Schema..."></textarea>
+        </form>
+        <hr>
+
+        <button type="button" class="btn btn-primary float-right" onclick="createAndCopyConfig()">
+            生成&复制
+        </button>
+        <br><br>
+
+        <textarea id="jsonConfig" class="form-control" rows="80" readonly></textarea>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script>
+        $(function () {
+            $(".alert").hide();
+
+            $('[data-toggle="tooltip"]').tooltip()
+
+            $(".inputUrl").click(function () {
+                let td = $(this);
+                bootbox.prompt({
+                    title: "请输入图片url",
+                    value: td.val(),
+                    callback: function (result) {
+                        let url = result == null ? "" : result;
+                        td.val(url);
+                        td.text(url.substring(0, 20) + "...");
+                    }
+                });
+            });
+        })
+
+        function initConfig() {
+            let data = localStorage.getItem("data");
+            if (data == "") {
+                return
+            }
+            let config = JSON.parse(data);
+            for (let i = 1; i <= 9; i++) {
+                $("#fishName" + i).text(config.fishMatchConfig.fishConfig[i].name);
+                $("#fishUrl" + i).text(config.fishMatchConfig.fishConfig[i].url);
+                $("#fishCost" + i).text(config.fishMatchConfig.fishConfig[i].cost);
+                $("#fishStock" + i).text(config.fishMatchConfig.fishConfig[i].stock);
+                $("#fishRatio" + i).text(config.fishMatchConfig.fishConfig[i].ratio);
+                $("#fishHighRatio" + i).text(config.fishMatchConfig.fishConfig[i].higherRatio);
+                if (config.fishMatchConfig.fishConfig[i].broadcast) {
+                    $("#fishBroadcast" + i).attr("checked", "true");
+                }
+            }
+            
+
+        }
+
+        function createAndCopyConfig() {
+            // parse config
+            let fishConfig = [];
+            for (let i = 1; i <= 9; i++) {
+                let fish = {
+                    "level": i,
+                    "name": $("#fishName" + i).text(),
+                    "url": $("#fishUrl" + i).text(),
+                    "cost": parseInt($("#fishCost" + i).text()),
+                    "stock": parseInt($("#fishStock" + i).text()),
+                    "ratio": parseInt($("#fishRatio" + i).text()),
+                    "higherRatio": parseInt($("#fishHighRatio" + i).text()),
+                };
+                if ($("#fishBroadcast" + i).prop('checked')) {
+                    fish["broadcast"] = true;
+                }
+                fishConfig.push(fish);
+            }
+
+            let giftConfig = [];
+            for (let i = 1; i <= 3; i++) {
+                let gift = {
+                    "attrId": $("#giftId" + i).text(),
+                    "name": $("#giftName" + i).text(),
+                    "cost": parseInt($("#giftCost" + i).text()),
+                    "fishMatchRange": []
+                }
+                let tdList = $("#resouce" + i).children();
+                for (let i = 1; i <= 9; i++) {
+                    const resourceId = parseInt($(tdList[i]).text());
+                    if (resourceId > 0) {
+                        gift.fishMatchRange.push({
+                            "level": i,
+                            "resourceId": resourceId
+                        });
+                    }
+                }
+                giftConfig.push(gift);
+            }
+
+            let fishingNet = {
+                "attrId": $("#giftId4").text(),
+                "name": $("#giftName4").text(),
+                "cost": parseInt($("#giftCost4").text())
+            };
+
+            let data = {
+                fishMatchConfig: {
+                    fishConfig: fishConfig,
+                    giftConfig: giftConfig,
+                    fishingNet: fishingNet,
+                    schema: $("#campaignMainUrl").text()
+                }
+            };
+            localStorage.setItem("data", JSON.stringify(data));
+
+            // copy
+            $("#jsonConfig").text(JSON.stringify(data, null, 8));
+            $("#jsonConfig").select();
+            try {
+                if (document.execCommand("copy", false, null)) {
+                    alert("复制成功");
+                } else {
+                    alert("复制失败");
+                }
+            } catch (e) {
+                alert("当前浏览器不支持复制");
+            }
+        }
+    </script>
+</body>
+
+</html>
