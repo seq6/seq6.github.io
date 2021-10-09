@@ -220,7 +220,7 @@
                 </thead>
                 <tbody>
                     <tr id="resouce1">
-                        <td>初级钓鱼</td>
+                        <td><b>初级钓鱼</b></td>
                         <td contenteditable="true">15817</td>
                         <td contenteditable="true">15817</td>
                         <td contenteditable="true">15817</td>
@@ -232,7 +232,7 @@
                         <td contenteditable="true"></td>
                     </tr>
                     <tr id="resouce2">
-                        <td>中级钓鱼</td>
+                        <td><b>中级钓鱼</b></td>
                         <td contenteditable="true"></td>
                         <td contenteditable="true"></td>
                         <td contenteditable="true"></td>
@@ -244,7 +244,7 @@
                         <td contenteditable="true"></td>
                     </tr>
                     <tr id="resouce3">
-                        <td>高级钓鱼</td>
+                        <td><b>高级钓鱼</b></td>
                         <td contenteditable="true"></td>
                         <td contenteditable="true"></td>
                         <td contenteditable="true"></td>
@@ -328,9 +328,16 @@
                 $("#giftId" + i).text(c.attrId);
                 $("#giftName" + i).text(c.name);
                 $("#giftCost" + i).text(c.cost);
-                for (const r of c.fishMatchRange) {
-                    const td = $("#resouce" + i).children()[r.level];
-                    $(td).text(r.resourceId);
+                let resourceMap = {};
+                for (const key in c.fishMatchRange) {
+                    if (Object.hasOwnProperty.call(c.fishMatchRange, key)) {
+                        const r = c.fishMatchRange[key];
+                        resourceMap[r.level] = r.resourceId;
+                    }
+                }
+                const tdList = $("#resouce" + i).children();
+                for (let j = 1; j <= 9; j++) {
+                    $(tdList[j]).text(resourceMap[j] != null ? resourceMap[j] : "");
                 }
             }
             $("#giftId4").text(config.fishMatchConfig.fishingNet.attrId);
