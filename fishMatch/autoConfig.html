@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="/libs/css/bootstrap.min.css" rel="stylesheet" />
     <title>fishMatchConfig</title>
 </head>
 
@@ -178,27 +176,27 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><b>初级钓鱼</b></td>
+                        <td><b>钓普通</b></td>
                         <td id="giftId1" contenteditable="true">10001</td>
-                        <td id="giftName1" contenteditable="true">钓lv1~lv4鱼</td>
+                        <td id="giftName1" contenteditable="true">初级钓竿</td>
                         <td id="giftCost1" contenteditable="true">9</td>
                     </tr>
                     <tr>
-                        <td><b>中级钓鱼</b></td>
+                        <td><b>钓高级</b></td>
                         <td id="giftId2" contenteditable="true">20001</td>
-                        <td id="giftName2" contenteditable="true">钓lv4~lv7鱼</td>
+                        <td id="giftName2" contenteditable="true">中级钓竿</td>
                         <td id="giftCost2" contenteditable="true">99</td>
                     </tr>
                     <tr>
-                        <td><b>高级钓鱼</b></td>
+                        <td><b>钓顶级</b></td>
                         <td id="giftId3" contenteditable="true">30001</td>
-                        <td id="giftName3" contenteditable="true">钓lv6~lv9鱼</td>
+                        <td id="giftName3" contenteditable="true">高级钓竿</td>
                         <td id="giftCost3" contenteditable="true">999</td>
                     </tr>
                     <tr>
-                        <td><b>渔网</b></td>
+                        <td><b>钓回</b></td>
                         <td id="giftId4" contenteditable="true">40001</td>
-                        <td id="giftName4" contenteditable="true">钓回丢失的鱼</td>
+                        <td id="giftName4" contenteditable="true">神奇渔网</td>
                         <td id="giftCost4" contenteditable="true">520</td>
                     </tr>
                 </tbody>
@@ -261,8 +259,7 @@
             </table>
 
             <h3>活动主页面</h3>
-            <textarea id="campaignMainUrl" class="form-control" rows="2"
-                placeholder="Schema..."></textarea>
+            <textarea id="campaignMainUrl" class="form-control" rows="2" placeholder="Schema..."></textarea>
         </form>
         <hr>
 
@@ -274,11 +271,11 @@
         <textarea id="jsonConfig" class="form-control" rows="80" readonly></textarea>
     </div>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script src="/libs/js/jquery.min.js"></script>
+    <script src="/libs/js/popper.min.js"></script>
+    <script src="/libs/js/bootstrap.min.js"></script>
+    <script src="/libs/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/js/bootbox.min.js"></script>
     <script>
         $(function () {
             $(".alert").hide();
@@ -291,12 +288,15 @@
                     title: "请输入图片url",
                     value: td.val(),
                     callback: function (result) {
-                        let url = result == null ? "" : result;
-                        td.val(url);
-                        td.text(url.substring(0, 20) + "...");
+                        if (result !== null) {
+                            td.val(result);
+                            td.text(result.length > 15 ? result.substring(0, 15) + "..." : result);
+                        }
                     }
                 });
             });
+
+            initConfig();
         })
 
         function initConfig() {
@@ -305,65 +305,82 @@
                 return
             }
             let config = JSON.parse(data);
+            if (config == null) {
+                return;
+            }
+            // fish
             for (let i = 1; i <= 9; i++) {
-                $("#fishName" + i).text(config.fishMatchConfig.fishConfig[i].name);
-                $("#fishUrl" + i).text(config.fishMatchConfig.fishConfig[i].url);
-                $("#fishCost" + i).text(config.fishMatchConfig.fishConfig[i].cost);
-                $("#fishStock" + i).text(config.fishMatchConfig.fishConfig[i].stock);
-                $("#fishRatio" + i).text(config.fishMatchConfig.fishConfig[i].ratio);
-                $("#fishHighRatio" + i).text(config.fishMatchConfig.fishConfig[i].higherRatio);
-                if (config.fishMatchConfig.fishConfig[i].broadcast) {
+                let c = config.fishMatchConfig.fishConfig[i - 1];
+                $("#fishName" + i).text(c.name);
+                $("#fishUrl" + i).val(c.url);
+                $("#fishUrl" + i).text(c.url.length > 15 ? c.url.substring(0, 15) + "..." : c.url);
+                $("#fishCost" + i).text(c.cost);
+                $("#fishStock" + i).text(c.stock);
+                $("#fishRatio" + i).text(c.ratio);
+                $("#fishHighRatio" + i).text(c.higherRatio);
+                if (c.broadcast) {
                     $("#fishBroadcast" + i).attr("checked", "true");
                 }
             }
-            
-
+            // gift & resource
+            for (let i = 1; i <= 3; i++) {
+                let c = config.fishMatchConfig.giftConfig[i - 1];
+                $("#giftId" + i).text(c.attrId);
+                $("#giftName" + i).text(c.name);
+                $("#giftCost" + i).text(c.cost);
+                for (const r of c.fishMatchRange) {
+                    const td = $("#resouce" + i).children()[r.level];
+                    $(td).text(r.resourceId);
+                }
+            }
+            $("#giftId4").text(config.fishMatchConfig.fishingNet.attrId);
+            $("#giftName4").text(config.fishMatchConfig.fishingNet.name);
+            $("#giftCost4").text(config.fishMatchConfig.fishingNet.cost);
+            // schame
+            $("#campaignMainUrl").val(config.fishMatchConfig.schema);
         }
 
         function createAndCopyConfig() {
-            // parse config
+            // fish
             let fishConfig = [];
             for (let i = 1; i <= 9; i++) {
                 let fish = {
-                    "level": i,
-                    "name": $("#fishName" + i).text(),
-                    "url": $("#fishUrl" + i).text(),
-                    "cost": parseInt($("#fishCost" + i).text()),
-                    "stock": parseInt($("#fishStock" + i).text()),
-                    "ratio": parseInt($("#fishRatio" + i).text()),
-                    "higherRatio": parseInt($("#fishHighRatio" + i).text()),
+                    level: i,
+                    name: $("#fishName" + i).text(),
+                    url: $("#fishUrl" + i).val(),
+                    cost: parseInt($("#fishCost" + i).text()),
+                    stock: parseInt($("#fishStock" + i).text()),
+                    ratio: parseInt($("#fishRatio" + i).text()),
+                    higherRatio: parseInt($("#fishHighRatio" + i).text()),
                 };
                 if ($("#fishBroadcast" + i).prop('checked')) {
                     fish["broadcast"] = true;
                 }
                 fishConfig.push(fish);
             }
-
+            // gift & resource
             let giftConfig = [];
             for (let i = 1; i <= 3; i++) {
-                let gift = {
-                    "attrId": $("#giftId" + i).text(),
-                    "name": $("#giftName" + i).text(),
-                    "cost": parseInt($("#giftCost" + i).text()),
-                    "fishMatchRange": []
-                }
+                let fishMatchRange = [];
                 let tdList = $("#resouce" + i).children();
                 for (let i = 1; i <= 9; i++) {
                     const resourceId = parseInt($(tdList[i]).text());
                     if (resourceId > 0) {
-                        gift.fishMatchRange.push({
-                            "level": i,
-                            "resourceId": resourceId
-                        });
+                        fishMatchRange.push({ level: i, resourceId: resourceId });
                     }
                 }
-                giftConfig.push(gift);
+                giftConfig.push({
+                    attrId: $("#giftId" + i).text(),
+                    name: $("#giftName" + i).text(),
+                    cost: parseInt($("#giftCost" + i).text()),
+                    fishMatchRange: fishMatchRange
+                });
             }
-
+            // net
             let fishingNet = {
-                "attrId": $("#giftId4").text(),
-                "name": $("#giftName4").text(),
-                "cost": parseInt($("#giftCost4").text())
+                attrId: $("#giftId4").text(),
+                name: $("#giftName4").text(),
+                cost: parseInt($("#giftCost4").text())
             };
 
             let data = {
@@ -371,7 +388,7 @@
                     fishConfig: fishConfig,
                     giftConfig: giftConfig,
                     fishingNet: fishingNet,
-                    schema: $("#campaignMainUrl").text()
+                    schema: $("#campaignMainUrl").val()
                 }
             };
             localStorage.setItem("data", JSON.stringify(data));
