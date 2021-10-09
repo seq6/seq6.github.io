@@ -278,10 +278,6 @@
     <script src="/libs/js/bootbox.min.js"></script>
     <script>
         $(function () {
-            $(".alert").hide();
-
-            $('[data-toggle="tooltip"]').tooltip()
-
             $(".inputUrl").click(function () {
                 let td = $(this);
                 bootbox.prompt({
@@ -295,7 +291,6 @@
                     }
                 });
             });
-
             initConfig();
         })
 
@@ -337,7 +332,7 @@
                 }
                 const tdList = $("#resouce" + i).children();
                 for (let j = 1; j <= 9; j++) {
-                    $(tdList[j]).text(resourceMap[j] != null ? resourceMap[j] : "");
+                    $(tdList[j]).text(resourceMap[j] !== null ? resourceMap[j] : "");
                 }
             }
             $("#giftId4").text(config.fishMatchConfig.fishingNet.attrId);
@@ -345,6 +340,8 @@
             $("#giftCost4").text(config.fishMatchConfig.fishingNet.cost);
             // schame
             $("#campaignMainUrl").val(config.fishMatchConfig.schema);
+            // json config
+            $("#jsonConfig").text(JSON.stringify(config, null, 8));
         }
 
         function createAndCopyConfig() {
@@ -371,9 +368,8 @@
                 let fishMatchRange = [];
                 let tdList = $("#resouce" + i).children();
                 for (let i = 1; i <= 9; i++) {
-                    const resourceId = parseInt($(tdList[i]).text());
-                    if (resourceId > 0) {
-                        fishMatchRange.push({ level: i, resourceId: resourceId });
+                    if ($(tdList[i]).text() !== "") {
+                        fishMatchRange.push({ level: i, resourceId: parseInt($(tdList[i]).text()) });
                     }
                 }
                 giftConfig.push({
