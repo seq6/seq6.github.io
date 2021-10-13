@@ -172,6 +172,7 @@
                         <th>id</th>
                         <th>名称</th>
                         <th>价值</th>
+                        <th>描述</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -180,24 +181,28 @@
                         <td id="giftId1" contenteditable="true">10001</td>
                         <td id="giftName1" contenteditable="true">初级钓竿</td>
                         <td id="giftCost1" contenteditable="true">9</td>
+                        <td id="giftDesc1" contenteditable="true">钓取普通</td>
                     </tr>
                     <tr>
                         <td><b>钓高级</b></td>
                         <td id="giftId2" contenteditable="true">20001</td>
                         <td id="giftName2" contenteditable="true">高级钓竿</td>
                         <td id="giftCost2" contenteditable="true">99</td>
+                        <td id="giftDesc2" contenteditable="true">钓取高级</td>
                     </tr>
                     <tr>
                         <td><b>钓顶级</b></td>
                         <td id="giftId3" contenteditable="true">30001</td>
                         <td id="giftName3" contenteditable="true">顶级钓竿</td>
                         <td id="giftCost3" contenteditable="true">999</td>
+                        <td id="giftDesc3" contenteditable="true">钓取顶级</td>
                     </tr>
                     <tr>
                         <td><b>钓回</b></td>
                         <td id="giftId4" contenteditable="true">40001</td>
                         <td id="giftName4" contenteditable="true">神奇渔网</td>
                         <td id="giftCost4" contenteditable="true">520</td>
+                        <td id="giftDesc4">-</td>
                     </tr>
                 </tbody>
             </table>
@@ -350,6 +355,7 @@
                     $("#giftId" + i).text(c.attrId);
                     $("#giftName" + i).text(c.name);
                     $("#giftCost" + i).text(c.cost);
+                    $("giftDesc" + i).text(c.desc);
                     let resourceMap = {};
                     for (const key in c.fishMatchRange) {
                         if (Object.hasOwnProperty.call(c.fishMatchRange, key)) {
@@ -417,6 +423,7 @@
                     attrId: $("#giftId" + i).text(),
                     name: $("#giftName" + i).text(),
                     cost: parseInt($("#giftCost" + i).text()),
+                    desc: $("#giftDesc" + i).text(),
                     fishMatchRange: fishMatchRange
                 });
             }
