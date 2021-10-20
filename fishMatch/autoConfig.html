@@ -405,7 +405,7 @@
                     higherRatio: parseInt($("#fishHighRatio" + i).text()),
                 };
                 if ($("#fishBroadcast" + i).prop('checked')) {
-                    fish["broadcast"] = true;
+                    fish["noticeMode"] = "broadcast";
                 }
                 fishConfig.push(fish);
             }
