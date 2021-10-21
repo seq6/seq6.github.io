@@ -265,10 +265,6 @@
 
             <h3>活动主页面</h3>
             <textarea id="campaignMainUrl" class="form-control" rows="2" placeholder="Schema..."></textarea>
-
-            <h3>钓回失败图片url</h3>
-            <textarea id="fishingBackFail" class="form-control"
-                rows="2">https://auto.tancdn.com/v1/raw/f334db65-74c3-4481-a6a3-dcdf1d3af92d09.png</textarea>
         </form>
         <hr>
 
@@ -382,11 +378,6 @@
                 $("#campaignMainUrl").val(config.fishMatchConfig.schema);
             }
 
-            // fishingBackFail
-            if (config.fishMatchConfig.fishingBackFail != null) {
-                $("#fishingBackFail").val(config.fishMatchConfig.fishingBackFail);
-            }
-
             // json config
             $("#jsonConfig").text(JSON.stringify(config, null, 8));
         }
@@ -439,8 +430,7 @@
                     fishConfig: fishConfig,
                     giftConfig: giftConfig,
                     fishingNet: fishingNet,
-                    schema: $("#campaignMainUrl").val(),
-                    fishingBackFail: $("#fishingBackFail").val()
+                    schema: $("#campaignMainUrl").val()
                 }
             };
             localStorage.setItem("data", JSON.stringify(data));
