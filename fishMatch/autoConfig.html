@@ -436,6 +436,7 @@
             localStorage.setItem("data", JSON.stringify(data));
 
             // copy
+            data.fishMatchConfig.fishConfig.reverse();
             $("#jsonConfig").text(JSON.stringify(data, null, 8));
             $("#jsonConfig").select();
             try {
