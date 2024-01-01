@@ -2,6 +2,7 @@
 import {ref} from 'vue'
 import {ChunLianSet} from "./models/ChunLian";
 import {showFailToast, showSuccessToast, showToast} from "vant";
+import useClipboard from 'vue-clipboard3'
 
 // 主题
 const topic = ref('新年通用');
@@ -100,6 +101,21 @@ const copyPickContent = () => {
   })
 }
 
+const {toClipboard} = useClipboard();
+const copyPickContentV2 = async () => {
+  try {
+    pickDialogShow.value = false;
+    let text = [];
+    for (const c of pickContent.value) {
+      text.push('【' + c.replace(',', ' ') + '】');
+    }
+    await toClipboard(text.join("、"));
+    showSuccessToast({message: '复制成功', duration: 2000});
+  } catch (err) {
+    showFailToast({message: '复制失败: ' + err, duration: 2000});
+  }
+}
+
 // 清空已选内容
 const clearPickContent = () => {
   pickDialogShow.value = false;
@@ -162,7 +178,7 @@ const deletePickedOne = (i: number) => {
       show-confirm-button
       confirm-button-text="复制到剪贴板"
       :confirm-button-disabled="pickNum==0"
-      @confirm="copyPickContent"
+      @confirm="copyPickContentV2"
       show-cancel-button
       cancel-button-text="清空"
       :cancel-button-disabled="pickNum==0"
