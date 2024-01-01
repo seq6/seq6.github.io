@@ -89,7 +89,11 @@ const pickOne = (i: number) => {
 // 复制已选内容至剪贴板
 const copyPickContent = () => {
   pickDialogShow.value = false;
-  navigator.clipboard.writeText(pickContent.value.join("\n")).then(() => {
+  let text = [];
+  for (const c of pickContent.value) {
+    text.push('【' + c.replace(',', ' ') + '】');
+  }
+  navigator.clipboard.writeText(text.join("、")).then(() => {
     showSuccessToast({message: '复制成功', duration: 2000});
   }).catch(err => {
     showFailToast({message: '复制失败: ' + err, duration: 2000});
@@ -98,9 +102,9 @@ const copyPickContent = () => {
 
 // 清空已选内容
 const clearPickContent = () => {
+  pickDialogShow.value = false;
   pickNum.value = 0;
   pickContent.value = [];
-  pickDialogShow.value = false;
   showSuccessToast({message: '已清空', duration: 2000});
 }
 
