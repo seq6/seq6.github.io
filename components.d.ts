@@ -7,7 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    CoupletCell: typeof import('./src/components/CoupletCell.vue')['default']
+    LangSwitch: typeof import('./src/components/LangSwitch.vue')['default']
+    ShoppingCart: typeof import('./src/components/ShoppingCart.vue')['default']
     VanActionSheet: typeof import('vant/es')['ActionSheet']
     VanBadge: typeof import('vant/es')['Badge']
     VanButton: typeof import('vant/es')['Button']
@@ -21,6 +23,7 @@ declare module 'vue' {
     VanNavBar: typeof import('vant/es')['NavBar']
     VanSpace: typeof import('vant/es')['Space']
     VanSwitch: typeof import('vant/es')['Switch']
+    VanTag: typeof import('vant/es')['Tag']
     VanToast: typeof import('vant/es')['Toast']
   }
 }
