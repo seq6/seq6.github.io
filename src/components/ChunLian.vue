@@ -128,8 +128,6 @@ const pickOne = (c: Couplet) => {
   <van-action-sheet v-model:show="topicSwitchShow" :actions="getTopicSheet()" @select="switchTopic"/>
 
   <ShoppingCart v-model:couplets="pickCouplets" v-model:show="pickDialogShow"/>
-
-  <van-toast/>
 </template>
 
 <style scoped>
