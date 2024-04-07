@@ -7,8 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ChuDaDi: typeof import('./src/components/ChuDaDi.vue')['default']
+    ChunLian: typeof import('./src/components/ChunLian.vue')['default']
     CoupletCell: typeof import('./src/components/CoupletCell.vue')['default']
+    Header: typeof import('./src/components/Header.vue')['default']
+    Home: typeof import('./src/components/Home.vue')['default']
     LangSwitch: typeof import('./src/components/LangSwitch.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     ShoppingCart: typeof import('./src/components/ShoppingCart.vue')['default']
     VanActionSheet: typeof import('vant/es')['ActionSheet']
     VanBadge: typeof import('vant/es')['Badge']
