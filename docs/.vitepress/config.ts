@@ -19,6 +19,10 @@ export default defineConfig({
       { text: 'VitePress', link: 'https://vitepress.dev/zh/' }
     ],
 
+    search: {
+      provider: 'local'
+    },
+
     docFooter: {
       prev: '上一页',
       next: '下一页'
@@ -37,12 +41,6 @@ export default defineConfig({
     },
 
     sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' }
-        ]
-      },
       {
         text: '后端-Backend',
         items: [
